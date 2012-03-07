@@ -1,0 +1,28 @@
+Model - simple UML editor
+==========================
+
+Purpose
+--------
+* model is an exercise in writing a pure JavaScript UML editor, that will support collaboration & remote-storage.
+
+
+
+Change log
+------------
+
+* 0.3
+- Changed the rendering to be based on Backbone Widgets
+- Adding Base classes
+
+
+* 0.2
+- Switched to CoffeeScript
+- Changed directory structure
+- Using Cake for build
+
+
+* 0.1
+- Initial version, written in JavaScript
+- MVC using Backbone.js
+- Visualization using d3.js
+- HTML template using Bootstrap2

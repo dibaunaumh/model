@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Model</title>
+    <meta name="description" content="A simple UML editor">
+    <meta name="author" content="@dibau_naum_h">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/css/model.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+    <link href="static/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Model</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+            <p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Project 1</li>
+              <li class="active"><a href="#">Class Diagram 1</a></li>
+              <li><a href="#">Diagram 2</a></li>
+              <li><a href="#">Diagram 3</a></li>
+              <li><a href="#">Diagram 4</a></li>
+              <li class="nav-header">Project 2</li>
+              <li><a href="#">Diagram 1</a></li>
+              <li><a href="#">Diagram 2</a></li>
+              <li><a href="#">Diagram 3</a></li>
+              <li><a href="#">Diagram 4</a></li>
+              <li><a href="#">Diagram 5</a></li>
+              <li><a href="#">Diagram 6</a></li>
+              <li class="nav-header">Project 3</li>
+              <li><a href="#">Diagram 1</a></li>
+              <li><a href="#">Diagram 2</a></li>
+              <li><a href="#">Diagram 3</a></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <div class="hero-unit">
+            <h2>Class Diagram 1</h2>
+            <p>This is the diagram description.</p>
+          </div>
+
+            <ul id="tab" class="nav nav-tabs">
+                <li class="active"><a href="#diagram" data-toggle="tab">Diagram</a></li>
+                <li class=""><a href="#source" data-toggle="tab">Source</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="diagram">
+                    <div id="chart" style="width: 675px; height: 360px;"></div>
+                </div>
+                <div class="tab-pane fade" id="source">
+                    <div>
+                        <textarea id="source_input" rows="20" style="width: 675px; height: 341px;"></textarea>
+                        <p class="muted" style="float: right;">
+                            For example:<br/><br/>
+                            Class1 : BaseClass1<br/>
+                            +method1<br/>
+                            +method2<br/>
+                            -method3<br/>
+                            <br/>
+                            Class2 : BaseClass1<br/>
+                            +method1<br/>
+                            +method2<br/>
+                            -method3<br/>
+                            <br/>
+                            Class3 : Class2<br/>
+                            +method1<br/>
+                            +method2<br/>
+                            -method3<br/>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>(cc) Model UML editor 2012</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/underscore.js"></script>
+    <script src="static/js/backbone.js"></script>
+    <script src="static/js/backbone.dualstorage.js"></script>
+    <script src="static/js/bootstrap-transition.js"></script>
+    <script src="static/js/bootstrap-alert.js"></script>
+    <script src="static/js/bootstrap-modal.js"></script>
+    <script src="static/js/bootstrap-dropdown.js"></script>
+    <script src="static/js/bootstrap-scrollspy.js"></script>
+    <script src="static/js/bootstrap-tab.js"></script>
+    <script src="static/js/bootstrap-tooltip.js"></script>
+    <script src="static/js/bootstrap-popover.js"></script>
+    <script src="static/js/bootstrap-button.js"></script>
+    <script src="static/js/bootstrap-collapse.js"></script>
+    <script src="static/js/bootstrap-carousel.js"></script>
+    <script src="static/js/bootstrap-typeahead.js"></script>
+    <script src="static/js/d3.min.js"></script>
+    <script src="static/js/d3.layout.min.js"></script>
+    <script src="static/js/d3.chart.min.js"></script>
+    <script src="static/js/d3.geo.min.js"></script>
+    <script src="static/js/d3.geom.min.js"></script>
+    <script src="static/js/d3.time.min.js"></script>
+    <!-- CoffeeScript output files -->
+    <script src="static/js/models.js"></script>
+    <script src="static/js/views.js"></script>
+    <script src="static/js/controllers.js"></script>
+
+  </body>
+</html>
