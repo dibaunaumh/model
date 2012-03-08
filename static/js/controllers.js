@@ -5,6 +5,10 @@
 
   EXAMPLES["simple"] = "Class1 : BaseClass1\n+method1\n+method2\n-method3\n\nClass2 : BaseClass1\n+method1\n+method2\n-method3\n\nClass3 : Class2\n+method1\n+method2\n-method3";
 
+  show_example = function(which) {
+    return $("#source_input").val(EXAMPLES[which]);
+  };
+
   create_parser = function() {
     var add_class, add_current_class, current_class, current_super_classes, members_map, previous_source,
       _this = this;
@@ -75,17 +79,13 @@
     };
   };
 
-  show_example = function(which) {
-    return $("#source_input").val(EXAMPLES[which]);
-  };
-
   $(function() {
     var parse;
     parse = create_parser();
     $("a[data-toggle=\"tab\"]").on("shown", function(e) {
       return parse();
     });
-    return $("#load_simple_example").click(function(e) {
+    return $("#load_simple_example").on("click", function(e) {
       return show_example("simple");
     });
   });

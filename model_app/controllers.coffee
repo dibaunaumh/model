@@ -16,6 +16,10 @@ Class3 : Class2
 -method3
 """
 
+show_example = (which) ->
+  $("#source_input").val(EXAMPLES[which])
+
+
 create_parser = ->
   previous_source = ""
   current_class = ""
@@ -70,11 +74,8 @@ create_parser = ->
 
       add_current_class()
 
-show_example = (which) ->
-  $("#source_input").val(EXAMPLES[which])
 
 $ ->
   parse = create_parser()
-  $("a[data-toggle=\"tab\"]").on "shown", (e) ->
-    parse()
-  $("#load_simple_example").click((e) -> show_example("simple"))
+  $("a[data-toggle=\"tab\"]").on "shown", (e) -> parse()
+  $("#load_simple_example").on "click", (e) -> show_example("simple")
