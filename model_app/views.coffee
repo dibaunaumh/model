@@ -142,14 +142,13 @@ class ClassDiagramView extends Backbone.View
 
   add_class: (model) =>
     class_view = new ClassView(model: model)
-    class_view.set_context(
+    class_view.set_context
       svg:                    @svg
       offset:                 @current_offset
       default_class_width:    @default_class_width
       default_member_height:  @default_member_height
       default_member_spacing: @default_member_spacing
       class_views_by_name:    @class_views_by_name
-    )
     class_view.render()
     @current_offset = class_view.offset
     @class_views_by_name[model.get "name"] = class_view
