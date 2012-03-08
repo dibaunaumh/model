@@ -13,8 +13,7 @@
       this.render = __bind(this.render, this);
       this.set_offset = __bind(this.set_offset, this);
       this.get_offset = __bind(this.get_offset, this);
-      this.set_dimensions = __bind(this.set_dimensions, this);
-      this.set_container = __bind(this.set_container, this);
+      this.set_context = __bind(this.set_context, this);
       this.initialize = __bind(this.initialize, this);
       ClassView.__super__.constructor.apply(this, arguments);
     }
@@ -24,15 +23,13 @@
       return this.model.on("destroy", this.remove);
     };
 
-    ClassView.prototype.set_container = function(svg) {
-      return this.svg = svg;
-    };
-
-    ClassView.prototype.set_dimensions = function(dimensions) {
-      this.offset = dimensions.offset;
-      this.default_class_width = dimensions.default_class_width;
-      this.default_member_height = dimensions.default_member_height;
-      return this.default_member_spacing = dimensions.default_member_spacing;
+    ClassView.prototype.set_context = function(context) {
+      this.svg = context.svg;
+      this.offset = context.offset;
+      this.default_class_width = context.default_class_width;
+      this.default_member_height = context.default_member_height;
+      this.default_member_spacing = context.default_member_spacing;
+      return this.class_views_by_name = context.class_views_by_name;
     };
 
     ClassView.prototype.get_offset = function(level) {
@@ -97,7 +94,9 @@
       return this;
     };
 
-    ClassView.prototype.destroy = function() {};
+    ClassView.prototype.destroy = function() {
+      return this.svg[0][0].removeChild(this.el[0][0]);
+    };
 
     return ClassView;
 
@@ -119,10 +118,7 @@
 
     ClassDiagramView.prototype.class_views_by_name = {};
 
-    ClassDiagramView.prototype.current_offset = {
-      l0: 0,
-      l1: 0
-    };
+    ClassDiagramView.prototype.current_offset = {};
 
     ClassDiagramView.prototype.default_class_width = 150;
 
@@ -149,11 +145,11 @@
     };
 
     ClassDiagramView.prototype.clear = function() {
-      var k, v, _ref;
+      var name, view, _ref;
       _ref = this.class_views_by_name;
-      for (k in _ref) {
-        v = _ref[k];
-        this.svg[0][0].removeChild(v.el[0][0]);
+      for (name in _ref) {
+        view = _ref[name];
+        view.destroy();
       }
       this.class_views_by_name = {};
       return this.current_offset = {};
@@ -164,14 +160,14 @@
       class_view = new ClassView({
         model: model
       });
-      class_view.set_container(this.svg);
-      class_view.set_dimensions({
+      class_view.set_context({
+        svg: this.svg,
         offset: this.current_offset,
         default_class_width: this.default_class_width,
         default_member_height: this.default_member_height,
-        default_member_spacing: this.default_member_spacing
+        default_member_spacing: this.default_member_spacing,
+        class_views_by_name: this.class_views_by_name
       });
-      class_view.class_views_by_name = this.class_views_by_name;
       class_view.render();
       this.current_offset = class_view.offset;
       return this.class_views_by_name[model.get("name")] = class_view;

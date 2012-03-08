@@ -4,14 +4,13 @@ class ClassView extends Backbone.View
     @model.on "change", @render
     @model.on "destroy", @remove
 
-  set_container: (svg) =>
-    @svg = svg
-
-  set_dimensions: (dimensions) =>
-    @offset = dimensions.offset
-    @default_class_width = dimensions.default_class_width
-    @default_member_height = dimensions.default_member_height
-    @default_member_spacing = dimensions.default_member_spacing
+  set_context: (context) =>
+    @svg = context.svg
+    @offset = context.offset
+    @default_class_width = context.default_class_width
+    @default_member_height = context.default_member_height
+    @default_member_spacing = context.default_member_spacing
+    @class_views_by_name = context.class_views_by_name
 
   get_offset: (level) =>
     if not @offset[level]
@@ -87,12 +86,13 @@ class ClassView extends Backbone.View
     return @
 
   destroy: =>
+    @svg[0][0].removeChild(@el[0][0])
 
 
 class ClassDiagramView extends Backbone.View
   svg: null
   class_views_by_name: {}
-  current_offset: l0: 0, l1: 0
+  current_offset: {}
   default_class_width: 150
   default_member_height: 20
   default_member_spacing: 20
@@ -136,20 +136,20 @@ class ClassDiagramView extends Backbone.View
       .attr("transform", "translate(2, 2)")
 
   clear: =>
-    @svg[0][0].removeChild(v.el[0][0]) for k, v of @class_views_by_name
+    view.destroy() for name, view of @class_views_by_name
     @class_views_by_name = {}
     @current_offset = {}
 
   add_class: (model) =>
     class_view = new ClassView(model: model)
-    class_view.set_container @svg
-    class_view.set_dimensions(
+    class_view.set_context(
+      svg:                    @svg
       offset:                 @current_offset
-      default_class_width:    @default_class_width,
-      default_member_height:  @default_member_height,
-      default_member_spacing: @default_member_spacing,
+      default_class_width:    @default_class_width
+      default_member_height:  @default_member_height
+      default_member_spacing: @default_member_spacing
+      class_views_by_name:    @class_views_by_name
     )
-    class_view.class_views_by_name = @class_views_by_name
     class_view.render()
     @current_offset = class_view.offset
     @class_views_by_name[model.get "name"] = class_view
