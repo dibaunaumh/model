@@ -12,7 +12,9 @@ Change log
 
 * 0.3
 - Changed the rendering to be based on Backbone Widgets
-- Adding Base classes
+- Added graphical relations in diagram
+- Diagram now updates when source changes
+- Deployed the app to: http://dev.model.udibauman.stackmobapp.com/
 
 
 * 0.2
