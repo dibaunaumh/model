@@ -1,3 +1,21 @@
+EXAMPLES = {}
+EXAMPLES["simple"] = """
+Class1 : BaseClass1
++method1
++method2
+-method3
+
+Class2 : BaseClass1
++method1
++method2
+-method3
+
+Class3 : Class2
++method1
++method2
+-method3
+"""
+
 create_parser = ->
   previous_source = ""
   current_class = ""
@@ -52,7 +70,11 @@ create_parser = ->
 
       add_current_class()
 
+show_example = (which) ->
+  $("#source_input").val(EXAMPLES[which])
+
 $ ->
   parse = create_parser()
   $("a[data-toggle=\"tab\"]").on "shown", (e) ->
     parse()
+  $("#load_simple_example").click((e) -> show_example("simple"))

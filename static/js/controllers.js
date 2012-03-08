@@ -1,5 +1,9 @@
 (function() {
-  var create_parser;
+  var EXAMPLES, create_parser, show_example;
+
+  EXAMPLES = {};
+
+  EXAMPLES["simple"] = "Class1 : BaseClass1\n+method1\n+method2\n-method3\n\nClass2 : BaseClass1\n+method1\n+method2\n-method3\n\nClass3 : Class2\n+method1\n+method2\n-method3";
 
   create_parser = function() {
     var add_class, add_current_class, current_class, current_super_classes, members_map, previous_source,
@@ -71,11 +75,18 @@
     };
   };
 
+  show_example = function(which) {
+    return $("#source_input").val(EXAMPLES[which]);
+  };
+
   $(function() {
     var parse;
     parse = create_parser();
-    return $("a[data-toggle=\"tab\"]").on("shown", function(e) {
+    $("a[data-toggle=\"tab\"]").on("shown", function(e) {
       return parse();
+    });
+    return $("#load_simple_example").click(function(e) {
+      return show_example("simple");
     });
   });
 
