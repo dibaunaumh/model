@@ -81,7 +81,7 @@ class ClassView extends Backbone.View
           .attr("stroke", "black")
           .attr("stroke-width", "0.75px")
           .attr("fill", "none")
-          .attr("marker-end", "url(#triangle)")
+          .attr("marker-end", "url(#inheritance-arrow)")
 
     return @
 
@@ -114,10 +114,9 @@ class ClassDiagramView extends Backbone.View
       .attr("height", h)
       .attr("class", "pack")
 
-
     @svg.append("defs")
       .selectAll("marker")
-      .data(["triangle"])
+      .data(["inheritance-arrow"])
       .enter()
       .append("marker")
       .attr("id", String)

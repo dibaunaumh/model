@@ -88,7 +88,7 @@
           path_d += " C" + points[0].x + "," + (points[0].y - 50);
           path_d += " " + points[1].x + "," + (points[1].y + 50);
           path_d += " " + points[1].x + "," + points[1].y;
-          this.el.append("path").attr("d", path_d).attr("stroke", "black").attr("stroke-width", "0.75px").attr("fill", "none").attr("marker-end", "url(#triangle)");
+          this.el.append("path").attr("d", path_d).attr("stroke", "black").attr("stroke-width", "0.75px").attr("fill", "none").attr("marker-end", "url(#inheritance-arrow)");
         }
       }
       return this;
@@ -140,7 +140,7 @@
         return d.size;
       });
       this.svg = d3.select("#chart").append("svg").attr("width", w).attr("height", h).attr("class", "pack");
-      this.svg.append("defs").selectAll("marker").data(["triangle"]).enter().append("marker").attr("id", String).attr("viewBox", "0 -5 10 10").attr("refX", 10).attr("refY", -0.5).attr("markerWidth", 10).attr("markerHeight", 10).attr("orient", "auto").append("svg:path").attr("d", "M0,-5L10,0L0,5");
+      this.svg.append("defs").selectAll("marker").data(["inheritance-arrow"]).enter().append("marker").attr("id", String).attr("viewBox", "0 -5 10 10").attr("refX", 10).attr("refY", -0.5).attr("markerWidth", 10).attr("markerHeight", 10).attr("orient", "auto").append("svg:path").attr("d", "M0,-5L10,0L0,5");
       return this.svg = this.svg.selectAll("g").data(["root"]).enter().append("g").attr("transform", "translate(2, 2)");
     };
 
