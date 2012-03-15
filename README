@@ -10,20 +10,20 @@ Purpose
 Change log
 ------------
 
-* 0.3
+* 0.3 (http://www.tikalk.com/javascript/building-uml-editor-javascript-part-3)
 - Changed the rendering to be based on Backbone Widgets
 - Added graphical relations in diagram
 - Diagram now updates when source changes
 - Deployed the app to: http://dev.model.udibauman.stackmobapp.com/
 
 
-* 0.2
+* 0.2 (http://www.tikalk.com/javascript/building-uml-editor-javascript-part-2)
 - Switched to CoffeeScript
 - Changed directory structure
 - Using Cake for build
 
 
-* 0.1
+* 0.1 (http://www.tikalk.com/javascript/building-uml-editor-javascript-part-1)
 - Initial version, written in JavaScript
 - MVC using Backbone.js
 - Visualization using d3.js
